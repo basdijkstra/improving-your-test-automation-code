@@ -1,0 +1,18 @@
+{
+  "request": {
+    "url": "/loanApplication",
+    "method": "POST",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath" : "$[?(@.loanAmount == 5000)]"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": { "result": "Denied" },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
