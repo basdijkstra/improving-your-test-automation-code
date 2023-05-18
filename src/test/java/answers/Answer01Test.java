@@ -3,7 +3,6 @@ package answers;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.restassured.http.ContentType;
 import models.LoanApplication;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -11,7 +10,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 @WireMockTest(httpPort = 9876)
-public class Answers01Test {
+public class Answer01Test {
 
     @ParameterizedTest(name = "A loan application for {0} should be {1}")
     @CsvSource({
