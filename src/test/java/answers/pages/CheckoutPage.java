@@ -1,9 +1,12 @@
 package answers.pages;
 
+import answers.pages.helpers.ElementInteractionHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutPage extends BasePage {
+public class CheckoutPage {
+
+    private final ElementInteractionHelper elementInteractionHelper;
 
     private final By textfieldFirstName = By.id("first-name");
     private final By textfieldLastName = By.id("last-name");
@@ -14,20 +17,20 @@ public class CheckoutPage extends BasePage {
 
     public CheckoutPage(WebDriver driver) {
 
-        super(driver);
+        this.elementInteractionHelper = new ElementInteractionHelper(driver);
     }
 
     public void completeOrderFor(String firstName, String lastName, String postalCode) {
 
-        sendKeys(textfieldFirstName, firstName);
-        sendKeys(textfieldLastName, lastName);
-        sendKeys(textfieldPostalCode, postalCode);
-        click(buttonContinueToOverview);
-        click(buttonConfirmOrder);
+        this.elementInteractionHelper.sendKeys(textfieldFirstName, firstName);
+        this.elementInteractionHelper.sendKeys(textfieldLastName, lastName);
+        this.elementInteractionHelper.sendKeys(textfieldPostalCode, postalCode);
+        this.elementInteractionHelper.click(buttonContinueToOverview);
+        this.elementInteractionHelper.click(buttonConfirmOrder);
     }
 
     public String getOrderConfirmationText() {
 
-        return getElementText(textlabelConfirmation);
+        return this.elementInteractionHelper.getElementText(textlabelConfirmation);
     }
 }
