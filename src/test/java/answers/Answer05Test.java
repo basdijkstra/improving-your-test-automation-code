@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Answer04Test {
+public class Answer05Test {
 
     @Test
     public void checkIfDefaultUserCanAccessLogFiles_shouldBeFalse() {
