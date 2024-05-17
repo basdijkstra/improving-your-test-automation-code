@@ -7,29 +7,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ProductsPage {
+public class BikeLightProductDetailPage {
 
-    private final WebDriver driver;
+    private WebDriver driver;
     private final WebDriverWait wait;
 
-    private final By buttonAddBackpackToCart = By.id("add-to-cart-sauce-labs-backpack");
-    private final By buttonGoToBikeLightDetailPage = By.xpath("//div[text()='Sauce Labs Bike Light']");
+    private final By buttonAddToCart = By.id("add-to-cart");
     private final By buttonGoToShoppingCart = By.xpath("//a[@class='shopping_cart_link']");
 
-    public ProductsPage(WebDriver driver) {
-
+    public BikeLightProductDetailPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public void addBackpackToCart() {
+    public void addItemToCart() {
 
-        click(buttonAddBackpackToCart);
-    }
-
-    public void goToBikeLightDetailPage() {
-
-        click(buttonGoToBikeLightDetailPage);
+         click(buttonAddToCart);
     }
 
     public void goToShoppingCart() {

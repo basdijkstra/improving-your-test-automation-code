@@ -2,8 +2,15 @@ package answers.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CheckoutPage extends BasePage {
+import java.time.Duration;
+
+public class CheckoutPage {
+
+    private final WebDriver driver;
+    private final WebDriverWait wait;
 
     private final By textfieldFirstName = By.id("first-name");
     private final By textfieldLastName = By.id("last-name");
@@ -11,10 +18,12 @@ public class CheckoutPage extends BasePage {
     private final By buttonContinueToOverview = By.id("continue");
     private final By buttonConfirmOrder = By.id("finish");
     private final By textlabelConfirmation = By.xpath("//h2");
+    private final By textlabelNumberOfItemsInShoppingCart = By.xpath("//span[@data-test='shopping-cart-badge']");
 
     public CheckoutPage(WebDriver driver) {
 
-        super(driver);
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void completeOrderFor(String firstName, String lastName, String postalCode) {
@@ -29,5 +38,28 @@ public class CheckoutPage extends BasePage {
     public String getOrderConfirmationText() {
 
         return getElementText(textlabelConfirmation);
+    }
+
+    public String getNumberOfItemsInOrder() {
+
+        return getElementText(textlabelNumberOfItemsInShoppingCart);
+    }
+
+    private void sendKeys(By locator, String textToType) {
+
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        driver.findElement(locator).sendKeys(textToType);
+    }
+
+    private void click(By locator) {
+
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        driver.findElement(locator).click();
+    }
+
+    private String getElementText(By locator) {
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return driver.findElement(locator).getText();
     }
 }

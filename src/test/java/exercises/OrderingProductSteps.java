@@ -1,9 +1,6 @@
 package exercises;
 
-import answers.pages.CheckoutPage;
-import answers.pages.LoginPage;
-import answers.pages.ProductsPage;
-import answers.pages.ShoppingCartPage;
+import answers.pages.*;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
