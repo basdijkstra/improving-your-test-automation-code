@@ -16,6 +16,8 @@
         <selenium.version>4.20.0</selenium.version>
         <junit.version>5.10.2</junit.version>
         <wiremock.version>3.5.4</wiremock.version>
+        <cucumber.version>7.17.0</cucumber.version>
+        <junit.platform.suite.version>1.10.2</junit.platform.suite.version>
         <lombok.version>1.18.32</lombok.version>
         <slf4j.version>2.0.13</slf4j.version>
     </properties>
@@ -54,6 +56,24 @@
             <groupId>org.wiremock</groupId>
             <artifactId>wiremock</artifactId>
             <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>${junit.platform.suite.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
