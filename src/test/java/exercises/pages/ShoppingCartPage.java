@@ -13,11 +13,23 @@ public class ShoppingCartPage {
     private final WebDriverWait wait;
 
     private final By buttonGoToCheckout = By.id("checkout");
+    private final By buttonRemoveBackpack = By.id("remove-sauce-labs-backpack");
+    private final By buttonContinueShopping = By.id("continue-shopping");
 
     public ShoppingCartPage(WebDriver driver) {
 
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    public void removeBackpackFromShoppingCart() {
+
+        click(buttonRemoveBackpack);
+    }
+
+    public void continueShopping() {
+
+        click(buttonContinueShopping);
     }
 
     public void goToCheckout() {

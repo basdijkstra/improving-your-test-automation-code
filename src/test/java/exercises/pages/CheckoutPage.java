@@ -18,6 +18,7 @@ public class CheckoutPage {
     private final By buttonContinueToOverview = By.id("continue");
     private final By buttonConfirmOrder = By.id("finish");
     private final By textlabelConfirmation = By.xpath("//h2");
+    private final By textlabelNumberOfItemsInShoppingCart = By.xpath("//span[@data-test='shopping-cart-badge']");
 
     public CheckoutPage(WebDriver driver) {
 
@@ -37,6 +38,11 @@ public class CheckoutPage {
     public String getOrderConfirmationText() {
 
         return getElementText(textlabelConfirmation);
+    }
+
+    public String getNumberOfItemsInOrder() {
+
+        return getElementText(textlabelNumberOfItemsInShoppingCart);
     }
 
     private void sendKeys(By locator, String textToType) {
