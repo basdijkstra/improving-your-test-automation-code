@@ -15,6 +15,7 @@ public class ShoppingCartPage {
     private final By buttonGoToCheckout = By.id("checkout");
     private final By buttonRemoveBackpack = By.id("remove-sauce-labs-backpack");
     private final By buttonContinueShopping = By.id("continue-shopping");
+    private final By textlabelNumberOfItemsInShoppingCart = By.xpath("//span[@data-test='shopping-cart-badge']");
 
     public ShoppingCartPage(WebDriver driver) {
 
@@ -32,6 +33,11 @@ public class ShoppingCartPage {
         click(buttonContinueShopping);
     }
 
+    public boolean shoppingCartIsEmpty() {
+
+        return isNotDisplayed(textlabelNumberOfItemsInShoppingCart);
+    }
+
     public void goToCheckout() {
 
         click(buttonGoToCheckout);
@@ -41,5 +47,16 @@ public class ShoppingCartPage {
 
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         driver.findElement(locator).click();
+    }
+
+    private boolean isNotDisplayed(By locator) {
+
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 }
