@@ -1,25 +1,12 @@
 package exercises;
 
-import exercises.users.User;
-import org.junit.jupiter.api.Test;
+import org.junit.platform.suite.api.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 
+@Suite
+@IncludeEngines("cucumber")
+@SelectPackages("exercises")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 public class Exercise03Test {
-
-    @Test
-    public void checkIfDefaultUserCanAccessLogFiles_shouldBeFalse() {
-
-        User user = new User("John Doe");
-
-        user.printInfo();
-
-        assertFalse(user.canAccessLogFiles());
-    }
-
-    @Test
-    public void checkIfAdminUserCanAccessLogFiles_shouldBeTrue() {
-
-        /// Eeerrmmm..
-    }
 }
