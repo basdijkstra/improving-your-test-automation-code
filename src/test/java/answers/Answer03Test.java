@@ -1,31 +1,15 @@
 package answers;
 
-import answers.users.AdminAccount;
-import answers.users.User;
-import answers.users.UserAccount;
-import org.junit.jupiter.api.Test;
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectPackages;
+import org.junit.platform.suite.api.Suite;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 
+@Suite
+@IncludeEngines("cucumber")
+@SelectPackages("answers")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 public class Answer03Test {
-
-    @Test
-    public void checkIfDefaultUserCanAccessLogFiles_shouldBeFalse() {
-
-        User user = new User("John Doe", new UserAccount("John Doe"));
-
-        user.printInfo();
-
-        assertFalse(user.canAccessLogFiles());
-    }
-
-    @Test
-    public void checkIfAdminUserCanAccessLogFiles_shouldBeTrue() {
-
-        User admin = new User("Susan Jones", new AdminAccount("Susan Jones"));
-
-        admin.printInfo();
-
-        assertTrue(admin.canAccessLogFiles());
-    }
 }

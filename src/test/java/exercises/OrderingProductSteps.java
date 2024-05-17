@@ -21,7 +21,7 @@ public class OrderingProductSteps {
 
     private WebDriver driver;
 
-    @Before
+    @Before(value = "@exercises")
     public void startBrowser() {
 
         driver = new ChromeDriver();
@@ -75,7 +75,7 @@ public class OrderingProductSteps {
         assertEquals(expectedConformationText, new CheckoutPage(driver).getOrderConfirmationText());
     }
 
-    @After
+    @After(value = "@exercises")
     public void closeBrowser() {
 
         driver.quit();
