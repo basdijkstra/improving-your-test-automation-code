@@ -2,7 +2,7 @@ package answers;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.restassured.http.ContentType;
-import models.LoanApplication;
+import answers.models.LoanApplication;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

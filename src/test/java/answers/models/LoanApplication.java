@@ -1,4 +1,4 @@
-package models;
+package answers.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
