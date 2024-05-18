@@ -7,24 +7,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoginPage {
-
-    private final WebDriver driver;
-    private final WebDriverWait wait;
+public class LoginPage extends BasePage {
 
     private final By textfieldUsername = By.id("user-name");
     private final By textfieldPassword = By.id("password");
     private final By buttonLogin = By.id("login-button");
 
     public LoginPage(WebDriver driver) {
-
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        super(driver);
     }
 
     public void open() {
 
-        this.driver.get("https://www.saucedemo.com/");
+        open("https://www.saucedemo.com/");
     }
 
     public void loginAs(String username, String password) {
@@ -32,17 +27,5 @@ public class LoginPage {
         sendKeys(textfieldUsername, username);
         sendKeys(textfieldPassword, password);
         click(buttonLogin);
-    }
-
-    private void sendKeys(By locator, String textToType) {
-
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-        driver.findElement(locator).sendKeys(textToType);
-    }
-
-    private void click(By locator) {
-
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-        driver.findElement(locator).click();
     }
 }

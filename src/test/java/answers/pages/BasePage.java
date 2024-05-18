@@ -40,4 +40,15 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return driver.findElement(locator).getText();
     }
+
+    protected boolean isNotDisplayed(By locator) {
+
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
+    }
 }

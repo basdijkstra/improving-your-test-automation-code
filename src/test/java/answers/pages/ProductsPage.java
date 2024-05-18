@@ -7,19 +7,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ProductsPage {
-
-    private final WebDriver driver;
-    private final WebDriverWait wait;
+public class ProductsPage extends BasePage {
 
     private final By buttonAddBackpackToCart = By.id("add-to-cart-sauce-labs-backpack");
     private final By buttonGoToBikeLightDetailPage = By.xpath("//div[text()='Sauce Labs Bike Light']");
     private final By buttonGoToShoppingCart = By.xpath("//a[@class='shopping_cart_link']");
 
     public ProductsPage(WebDriver driver) {
-
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        super(driver);
     }
 
     public void addBackpackToCart() {
@@ -35,11 +30,5 @@ public class ProductsPage {
     public void goToShoppingCart() {
 
         click(buttonGoToShoppingCart);
-    }
-
-    private void click(By locator) {
-
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-        driver.findElement(locator).click();
     }
 }

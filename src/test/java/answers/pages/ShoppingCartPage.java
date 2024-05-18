@@ -7,10 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ShoppingCartPage {
-
-    private final WebDriver driver;
-    private final WebDriverWait wait;
+public class ShoppingCartPage extends BasePage {
 
     private final By buttonGoToCheckout = By.id("checkout");
     private final By buttonRemoveBackpack = By.id("remove-sauce-labs-backpack");
@@ -18,9 +15,7 @@ public class ShoppingCartPage {
     private final By textlabelNumberOfItemsInShoppingCart = By.xpath("//span[@data-test='shopping-cart-badge']");
 
     public ShoppingCartPage(WebDriver driver) {
-
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        super(driver);
     }
 
     public void removeBackpackFromShoppingCart() {
@@ -41,22 +36,5 @@ public class ShoppingCartPage {
     public void goToCheckout() {
 
         click(buttonGoToCheckout);
-    }
-
-    private void click(By locator) {
-
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-        driver.findElement(locator).click();
-    }
-
-    private boolean isNotDisplayed(By locator) {
-
-        try {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-            return true;
-        }
-        catch (Exception e) {
-            return false;
-        }
     }
 }
