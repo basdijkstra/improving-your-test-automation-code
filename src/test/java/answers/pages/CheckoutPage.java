@@ -21,6 +21,11 @@ public class CheckoutPage extends BasePage {
         super(driver);
     }
 
+    public String getNumberOfItemsInOrder() {
+
+        return getElementText(textlabelNumberOfItemsInShoppingCart);
+    }
+
     public void completeOrderFor(String firstName, String lastName, String postalCode) {
 
         sendKeys(textfieldFirstName, firstName);
